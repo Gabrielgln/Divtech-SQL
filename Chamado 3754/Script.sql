@@ -1,0 +1,12 @@
+START TRANSACTION;
+	DELETE FROM Associado WHERE Cpf_Cnpj = "";
+ROLLBACK;
+#COMMIT;
+
+START TRANSACTION;
+	DELETE a1 FROM Associado a1
+	INNER JOIN Associado a2
+	WHERE 
+	a1.Id < a2.Id AND a1.Cpf_Cnpj  = a2.Cpf_Cnpj;
+ROLLBACK;
+#COMMIT;
